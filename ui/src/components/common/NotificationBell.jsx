@@ -1,0 +1,94 @@
+import React, { useEffect, useRef, useState } from "react";
+import { FaBell } from "react-icons/fa";
+import axiosInstance from "../../utils/axiosInstance";
+
+const NotificationBell = () => {
+  const [open, setOpen] = useState(false);
+  const [notifications, setNotifications] = useState([]);
+  const [unreadCount, setUnreadCount] = useState(0);
+  const wrapRef = useRef(null);
+
+  const fetchNotifications = async () => {
+    try {
+      const res = await axiosInstance.get("/notifications");
+      setNotifications(res?.data?.result?.notifications || []);
+      setUnreadCount(res?.data?.result?.unreadCount || 0);
+    } catch (err) {
+      // fail silently — a broken bell shouldn't break navigation
+    }
+  };
+
+  useEffect(() => {
+    fetchNotifications();
+    const interval = setInterval(fetchNotifications, 30000); // poll every 30s
+    return () => clearInterval(interval);
+  }, []);
+
+  // close on outside click
+  useEffect(() => {
+    const handler = (e) => {
+      if (wrapRef.current && !wrapRef.current.contains(e.target)) {
+        setOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handler);
+    return () => document.removeEventListener("mousedown", handler);
+  }, []);
+
+  const toggleOpen = () => setOpen((o) => !o);
+
+  const markOneRead = async (id) => {
+    try {
+      await axiosInstance.post("/notifications-mark-read", { notificationId: id });
+      fetchNotifications();
+    } catch (err) {
+      // ignore
+    }
+  };
+
+  const markAllRead = async () => {
+    try {
+      await axiosInstance.post("/notifications-mark-all-read");
+      fetchNotifications();
+    } catch (err) {
+      // ignore
+    }
+  };
+
+  return (
+    <div className="notif-bell-wrap" ref={wrapRef}>
+      <button type="button" className="notif-bell-btn" onClick={toggleOpen}>
+        <FaBell />
+        {unreadCount > 0 && <span className="notif-bell-count">{unreadCount}</span>}
+      </button>
+
+      {open && (
+        <div className="notif-dropdown">
+          <div className="notif-dropdown-header">
+            <strong>Notifications</strong>
+            {unreadCount > 0 && (
+              <button type="button" onClick={markAllRead}>Mark all read</button>
+            )}
+          </div>
+
+          {notifications.length === 0 ? (
+            <div className="notif-empty">No notifications yet</div>
+          ) : (
+            notifications.map((n) => (
+              <div
+                key={n._id}
+                className={`notif-item ${n.isRead ? "" : "unread"}`}
+                onClick={() => !n.isRead && markOneRead(n._id)}
+              >
+                {n.message}
+                <small>{new Date(n.createdAt).toLocaleString()}</small>
+              </div>
+            ))
+          )}
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default NotificationBell;
