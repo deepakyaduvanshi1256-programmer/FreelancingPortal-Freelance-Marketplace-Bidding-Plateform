@@ -57,3 +57,16 @@ The platform supports three different user roles:
 - Assign projects to selected Developers
 - Track project progress and completion
 - Receive real-time notifications for project and bidding activities
+
+## Developer Features
+
+- Browse available freelance projects
+- View project requirements and details
+- Submit competitive bids using tokens
+- Track submitted bids
+- Receive bid status notifications
+- Get notified when a bid is accepted or rejected
+- View assigned projects
+- Work on assigned projects
+- Complete assigned projects
+- Manage available bidding tokens
