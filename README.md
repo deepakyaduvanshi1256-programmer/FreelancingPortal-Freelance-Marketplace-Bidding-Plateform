@@ -101,3 +101,17 @@ FreelancingPortal uses concurrency-safe logic when a Client accepts a Developer 
 - Once a bid is accepted, other pending bids are automatically rejected.
 - Conditional database updates help prevent multiple Developers from being assigned to the same project during simultaneous requests.
 - This ensures consistent project and bidding state under concurrent operations.
+
+## Real-Time Notifications
+
+FreelancingPortal provides in-app notifications to keep users updated about important platform activities.
+
+The system supports notifications for the following events:
+
+1. Bid Received
+2. Bid Accepted
+3. Bid Rejected
+4. Project Assigned
+5. Account Blocked
+
+These notifications help Clients, Developers, and Admins stay informed about important changes without manually checking every section of the platform.
