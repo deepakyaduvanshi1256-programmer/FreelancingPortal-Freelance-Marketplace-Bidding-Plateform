@@ -141,3 +141,45 @@ FreelancingPortal implements multiple security mechanisms to protect user accoun
 - Atomic MongoDB operations for safe token updates
 - Conditional database updates for concurrency-safe bid acceptance
 - User account blocking and moderation through Admin controls
+
+## Technologies & API Architecture
+
+### Frontend
+
+- React.js
+- JavaScript
+- HTML5
+- CSS3
+- Bootstrap
+
+### Backend
+
+- Node.js
+- Express.js
+- REST API
+- JWT Authentication
+- bcrypt
+
+### Database
+
+- MongoDB
+- Mongoose
+
+### Development Tools
+
+- Git
+- GitHub
+- Postman
+- Visual Studio Code
+
+## REST API Architecture
+
+FreelancingPortal provides **20+ REST API endpoints** for different platform workflows.
+
+The APIs are secured using:
+
+- JWT authentication
+- bcrypt password hashing
+- Role-Based Access Control (RBAC)
+
+The API architecture supports Admin, Client, and Developer operations including authentication, projects, bidding, wallet management, notifications, and user management.
