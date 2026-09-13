@@ -28,3 +28,21 @@ Clients can create and publish projects, receive competitive bids from Developer
 Developers can discover available projects, submit bids using tokens, track their bids, and work on assigned projects.
 
 Admins can manage users, monitor projects, moderate platform activities, and handle account-related actions.
+
+## Authentication & User Roles
+
+FreelancingPortal uses secure token-based authentication with JWT.
+
+The platform supports three different user roles:
+
+- **Admin** – Manages users, projects, moderation, and platform activities.
+- **Client** – Creates projects, receives bids, reviews developers, and hires developers.
+- **Developer** – Browses projects, submits bids, manages bids, and works on assigned projects.
+
+### Authentication Features
+
+- JWT-based authentication
+- Secure password hashing using bcrypt
+- Role-Based Access Control (RBAC)
+- Protected REST API routes
+- Role-specific workflows for Admin, Client, and Developer
