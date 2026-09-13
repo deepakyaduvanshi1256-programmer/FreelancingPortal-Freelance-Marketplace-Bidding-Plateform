@@ -231,3 +231,10 @@ MongoDB is used to store:
 ```bash
 git clone <repository-url>
 cd FreelancingPortal
+
+---
+
+## Project Owner & Designer
+
+Er. Deepak Yadav**
+Full Stack Developer | MERN Stack Developer | IT**
