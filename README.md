@@ -126,3 +126,18 @@ FreelancingPortal provides a token-based wallet system for Developers.
 - Developers can purchase token packages to increase their available bidding balance.
 - Token transactions are handled through backend validation and database operations.
 - The wallet system supports the platform's competitive bidding workflow.
+
+
+## Security Features
+
+FreelancingPortal implements multiple security mechanisms to protect user accounts, APIs, and platform workflows.
+
+- JWT-based authentication for protected routes
+- bcrypt password hashing
+- Role-Based Access Control (RBAC)
+- Protected Admin, Client, and Developer workflows
+- Authenticated REST API endpoints
+- Token balance validation before bidding
+- Atomic MongoDB operations for safe token updates
+- Conditional database updates for concurrency-safe bid acceptance
+- User account blocking and moderation through Admin controls
