@@ -81,3 +81,13 @@ The platform supports three different user roles:
 - Receive notifications for account-related actions
 - Maintain platform security and access control
 - Manage the overall freelance marketplace
+
+## Token-Based Bidding System
+
+FreelancingPortal uses a token-based bidding system to manage competitive project bids.
+
+- Developers use tokens to submit bids on projects.
+- Token balance is validated before placing a bid.
+- MongoDB atomic `$inc` operations are used for token balance updates.
+- Atomic operations help prevent incorrect token deductions during simultaneous bid submissions.
+- The system maintains consistent token balances even when multiple users submit bids concurrently.
