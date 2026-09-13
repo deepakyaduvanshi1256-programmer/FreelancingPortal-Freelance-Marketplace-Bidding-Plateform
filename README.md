@@ -224,3 +224,10 @@ MongoDB is used to store:
 - Token balances
 - Notifications
 - Other platform-related data
+
+
+## Installation & Setup
+
+```bash
+git clone <repository-url>
+cd FreelancingPortal
