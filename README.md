@@ -46,3 +46,14 @@ The platform supports three different user roles:
 - Role-Based Access Control (RBAC)
 - Protected REST API routes
 - Role-specific workflows for Admin, Client, and Developer
+
+## Client Features
+
+- Create and publish freelance projects
+- Define project requirements and details
+- View competitive bids from Developers
+- Review developer proposals and bid details
+- Hire a suitable Developer
+- Assign projects to selected Developers
+- Track project progress and completion
+- Receive real-time notifications for project and bidding activities
