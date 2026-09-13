@@ -232,9 +232,8 @@ MongoDB is used to store:
 git clone <repository-url>
 cd FreelancingPortal
 
----
 
 ## Project Owner & Designer
 
-Er. Deepak Yadav**
-Full Stack Developer | MERN Stack Developer | IT**
+Er. Deepak Yadav
+Full Stack Developer | MERN Stack Developer | IT
