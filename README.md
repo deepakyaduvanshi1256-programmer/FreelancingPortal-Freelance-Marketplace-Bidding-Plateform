@@ -70,3 +70,14 @@ The platform supports three different user roles:
 - Work on assigned projects
 - Complete assigned projects
 - Manage available bidding tokens
+
+## Admin Features
+
+- Manage registered users
+- Monitor Client and Developer accounts
+- Moderate platform activities
+- Manage project-related activities
+- Block or manage user accounts
+- Receive notifications for account-related actions
+- Maintain platform security and access control
+- Manage the overall freelance marketplace
