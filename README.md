@@ -91,3 +91,13 @@ FreelancingPortal uses a token-based bidding system to manage competitive projec
 - MongoDB atomic `$inc` operations are used for token balance updates.
 - Atomic operations help prevent incorrect token deductions during simultaneous bid submissions.
 - The system maintains consistent token balances even when multiple users submit bids concurrently.
+
+## Concurrency-Safe Bid Acceptance
+
+FreelancingPortal uses concurrency-safe logic when a Client accepts a Developer bid.
+
+- Conditional `findOneAndUpdate` queries are used during bid acceptance.
+- The project is assigned to only one Developer.
+- Once a bid is accepted, other pending bids are automatically rejected.
+- Conditional database updates help prevent multiple Developers from being assigned to the same project during simultaneous requests.
+- This ensures consistent project and bidding state under concurrent operations.
