@@ -18,3 +18,13 @@ The platform connects Clients and Developers through project posting, competitiv
 - Admin
 - Client
 - Developer
+
+## About The Project
+
+FreelancingPortal is designed to provide a complete digital marketplace for freelance work.
+
+Clients can create and publish projects, receive competitive bids from Developers, review proposals, and hire suitable Developers.
+
+Developers can discover available projects, submit bids using tokens, track their bids, and work on assigned projects.
+
+Admins can manage users, monitor projects, moderate platform activities, and handle account-related actions.
