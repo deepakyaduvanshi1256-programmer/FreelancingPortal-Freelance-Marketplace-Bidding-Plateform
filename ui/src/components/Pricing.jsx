@@ -1,7 +1,13 @@
 import React from 'react'
 import { IoCheckmarkOutline } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 import { RxCross1 } from "react-icons/rx";
 const Pricing = () => {
+   const navigate = useNavigate();
+
+  const fetchCredit = () => {
+    navigate("/user-plans");
+  };
   return (
     <>
     <div className="row px-5 testimonial">
@@ -23,7 +29,7 @@ const Pricing = () => {
                   <p className='fontsize'> <RxCross1 className=' fs-5' /> Priority bid visibility</p>
                   <p className='fontsize'> <RxCross1 className=' fs-5 mt-2' /> Bid analytics dashboard</p>
                  </div>
-                 <button className='bg bg-info w-100 text-light btn mt-4 mb-2'>Current Plan</button>
+                 <button className='bg bg-info w-100 text-light btn mt-4 mb-2' onClick={fetchCredit}>Go Plan</button>
                  <p className='month mx-5 mb-4'>10 credits included · 1 credit per bid</p>
               </div>
             </div>
@@ -39,7 +45,7 @@ const Pricing = () => {
                   <p className='fontsize'> <IoCheckmarkOutline className='text-danger fs-3' /> Priority bid visibility</p>
                   <p className='fontsize'> <RxCross1 className=' fs-5' /> Bid analytics dashboard</p>
                  </div>
-                 <button className='bg bg-info w-100 text-light btnn mt-4 mb-3'>Get Pro Plan</button>
+                 <button className='bg bg-info w-100 text-light btnn mt-4 mb-3' onClick={fetchCredit}>Get Pro Plan</button>
                  <p className='month mx-5'>50 credits included · 1 credit per bid</p>
               </div>
             </div>
@@ -55,7 +61,7 @@ const Pricing = () => {
                   <p className='fontsize'> <IoCheckmarkOutline className='text-danger fs-3' /> Priority bid visibility</p>
                   <p className='fontsize'> <IoCheckmarkOutline className=' text-danger fs-3' /> Bid analytics dashboard</p>
                  </div>
-                 <button className='bg bg-info w-100 text-light btnn mt-3 mb-3'>Get Pro Plan</button>
+                 <button className='bg bg-info w-100 text-light btnn mt-3 mb-3' onClick={fetchCredit}>Get Advance Plan</button>
                  <p className='month mx-5'>150 credits included · 1 credit per bid</p>
               </div>
             </div>

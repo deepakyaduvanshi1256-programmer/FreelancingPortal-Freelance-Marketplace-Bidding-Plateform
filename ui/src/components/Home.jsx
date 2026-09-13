@@ -7,7 +7,7 @@ import TrendingSection from './TrendingSection'
 import TestimonalSection from './TestimonalSection'
 import Contact from './Contact'
 
-import PartnerSection from './PartnerSection'
+
 import ArticleSection from './ArticleSection'
 import TalentSection from './TalentSection'
 import Pricing from './Pricing'

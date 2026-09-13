@@ -32,9 +32,18 @@
     color: white;
     font-size: 18px;
 }
-
-.herobtn:hover {
-    color: #E65100;
+.herobtn{
+    color: #f6f5f2;
+    background-color: #ec790e;
+    text-decoration: none;
+     transition: all 1s;
+     margin-left: 60px;
+     padding-left: 17px;
+}
+.herobtn:hover{
+    color: red;
+    background-color: #1a56db;
+    transition: all 1s;
 }
 
 .herodot {

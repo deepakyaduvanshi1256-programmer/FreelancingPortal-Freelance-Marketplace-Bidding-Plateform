@@ -1,8 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { FaStar } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+
 
 const TrendingSection = () => {
+  const navigate = useNavigate();
+  
+    const fetchBids = () => {
+      navigate("/user-bids");
+    };
   return (
     <>
 
@@ -30,7 +37,7 @@ const TrendingSection = () => {
                   <span className='float-start'>8 bids</span>
                   <span className='float-end'> 45 views</span>
                 </div>
-                <Link className='btn bg-color-1 w-50 p-0 mt-1 text-light herobtn'>Place Bid</Link>
+                <button className='w-50  py-2 rounded mt-1  herobtn' onClick={fetchBids }>Place Bid</button>
               </div>
             </div>
 
@@ -52,7 +59,7 @@ const TrendingSection = () => {
                   <span className='float-start'>8 bids</span>
                   <span className='float-end'> 45 views</span>
                 </div>
-                <Link className='btn bg-color-1 w-50 p-0 mt-1 text-light herobtn'>Place Bid</Link>
+                <button className='w-50 py-2 rounded mt-1  herobtn' onClick={fetchBids }>Place Bid</button>
               </div>
             </div>
 
@@ -74,7 +81,7 @@ const TrendingSection = () => {
                   <span className='float-start'>8 bids</span>
                   <span className='float-end'> 45 views</span>
                 </div>
-                <Link className='btn bg-color-1 w-50 p-0 mt-1 text-light herobtn'>Place Bid</Link>
+                <button className=' w-50  py-2 rounded mt-1  herobtn' onClick={fetchBids }>Place Bid</button>
               </div>
             </div>
 
@@ -96,7 +103,7 @@ const TrendingSection = () => {
                   <span className='float-start'>8 bids</span>
                   <span className='float-end'> 45 views</span>
                 </div>
-                <Link className='btn bg-color-1 w-50 p-0 mt-1 text-light herobtn'>Place Bid</Link>
+                <button className='w-50  py-2 rounded mt-1  herobtn' onClick={fetchBids }>Place Bid</button>
               </div>
             </div>
 

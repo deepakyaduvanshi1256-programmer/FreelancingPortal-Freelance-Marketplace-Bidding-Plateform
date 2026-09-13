@@ -5,10 +5,8 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import './App.css'
 import Home from './components/Home'
 import Register from './components/Register'
-import Services from './components/Services'
 import Pricing from './components/Pricing'
 import Login from './components/Login'
-import About from './components/About'
 import Contact from './components/Contact'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -39,9 +37,7 @@ const App = () => {
         <Routes>
           {/* common url */}
           < Route path='/' element={<Home />} />
-          < Route path='/services' element={< Services />} />
           < Route path='/pricing' element={< Pricing />} />
-          < Route path='/about' element={<About />} />
           < Route path='/contact' element={<Contact />} />
           < Route path='/register' element={<Register />} />
           < Route path='/login' element={<Login />} />
