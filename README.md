@@ -183,3 +183,44 @@ The APIs are secured using:
 - Role-Based Access Control (RBAC)
 
 The API architecture supports Admin, Client, and Developer operations including authentication, projects, bidding, wallet management, notifications, and user management.
+
+## Project Architecture
+
+FreelancingPortal follows a separate frontend and backend architecture.
+
+### Frontend
+
+The frontend is developed using React.js and is responsible for:
+
+- User interface
+- Client dashboard
+- Developer dashboard
+- Admin dashboard
+- Project management
+- Bidding interface
+- Wallet and token management
+- Notifications
+
+### Backend
+
+The backend is developed using Node.js and Express.js and is responsible for:
+
+- Authentication and authorization
+- User management
+- Project management
+- Bid management
+- Token transactions
+- Wallet operations
+- Notifications
+- Admin operations
+
+### Database
+
+MongoDB is used to store:
+
+- User information
+- Project details
+- Bids
+- Token balances
+- Notifications
+- Other platform-related data
