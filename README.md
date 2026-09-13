@@ -115,3 +115,14 @@ The system supports notifications for the following events:
 5. Account Blocked
 
 These notifications help Clients, Developers, and Admins stay informed about important changes without manually checking every section of the platform.
+
+## Wallet & Token Package System
+
+FreelancingPortal provides a token-based wallet system for Developers.
+
+- Developers can maintain a token balance in their wallet.
+- Tokens are required to submit project bids.
+- Token balance is validated before placing a bid.
+- Developers can purchase token packages to increase their available bidding balance.
+- Token transactions are handled through backend validation and database operations.
+- The wallet system supports the platform's competitive bidding workflow.
