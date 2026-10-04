@@ -21,7 +21,7 @@ const TrendingSection = () => {
 
             <div className="col-sm-3">
               <div className='card shadow-lg mx-auto border border-0 trendingcard position-relative p-2'>
-                <img src="/public/images/course-04-590x430.jpg" alt="" className='img-fluid' />
+                <img src="/images/course-04-590x430.jpg" alt="" className='img-fluid' />
                 <span className='badge bg-color-1 position-absolute'>Fixed Priced</span>
                 <h6 className='m-0 pt-2'>E-Commerce Website</h6>
                 <p className='m-0 trendingstar'>
@@ -43,7 +43,7 @@ const TrendingSection = () => {
 
             <div className="col-sm-3">
               <div className='card shadow-lg mx-auto border border-0 trendingcard position-relative p-2'>
-                <img src="/public/images/course-04-590x430.jpg" alt="" className='img-fluid' />
+                <img src="/images/course-04-590x430.jpg" alt="" className='img-fluid' />
                 <span className='badge bg-color-1 position-absolute'>Fixed Priced</span>
                 <h6 className='m-0 pt-2'>E-Commerce Website</h6>
                 <p className='m-0 trendingstar'>
@@ -65,7 +65,7 @@ const TrendingSection = () => {
 
             <div className="col-sm-3">
               <div className='card shadow-lg mx-auto border border-0 trendingcard position-relative p-2'>
-                <img src="/public/images/course-04-590x430.jpg" alt="" className='img-fluid' />
+                <img src="/images/course-04-590x430.jpg" alt="" className='img-fluid' />
                 <span className='badge bg-color-1 position-absolute'>Fixed Priced</span>
                 <h6 className='m-0 pt-2'>E-Commerce Website</h6>
                 <p className='m-0 trendingstar'>
@@ -87,7 +87,7 @@ const TrendingSection = () => {
 
             <div className="col-sm-3">
               <div className='card shadow-lg mx-auto border border-0 trendingcard position-relative p-2'>
-                <img src="/public/images/course-04-590x430.jpg" alt="" className='img-fluid' />
+                <img src="/images/course-04-590x430.jpg" alt="" className='img-fluid' />
                 <span className='badge bg-color-1 position-absolute'>Fixed Priced</span>
                 <h6 className='m-0 pt-2'>E-Commerce Website</h6>
                 <p className='m-0 trendingstar'>
