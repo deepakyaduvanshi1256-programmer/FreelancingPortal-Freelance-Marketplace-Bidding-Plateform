@@ -10,9 +10,9 @@ const TrustedSection = () => {
           <hr className='w-25 mx-auto text-color1' />
           <div className="row">
             <div className="col-sm-6 position-relative pt-5">
-              <img src="/public/images/about-01.webp" alt="" className='img-fluid rounded-3' />
+              <img src="/images/about-01.webp" alt="" className='img-fluid rounded-3' />
               <div className='shadow-lg p-1 position-absolute w-50 trustedimg'>
-                <img src="/public/images/Image-2.png" alt="" className='img-fluid rounded-3' /></div>
+                <img src="/images/Image-2.png" alt="" className='img-fluid rounded-3' /></div>
             </div>
             <div className="col-sm-6 trustediv">
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto doloribus expedita molestiae 
