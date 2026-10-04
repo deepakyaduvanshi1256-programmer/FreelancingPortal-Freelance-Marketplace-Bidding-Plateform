@@ -17,7 +17,7 @@ const HeroSection = () => {
           
           <div className="col-sm-6">
             <img src="/images/girl-1.webp" alt="" className='img-fluid w-75'/>
-            <img src="/public/images/h-1-shape-01.png" alt="" className='position-absolute herosideimg'/>
+            <img src="/images/h-1-shape-01.png" alt="" className='position-absolute herosideimg'/>
           </div>
         </div>
       </div>

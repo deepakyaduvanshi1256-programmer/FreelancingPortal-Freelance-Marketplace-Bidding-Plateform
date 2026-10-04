@@ -21,7 +21,7 @@ const TestimonalSection = () => {
             </div>
             <div className="col-sm-3">
               <div className='shadow-lg p-3'>
-                <img src="/public/images/testimonial-04.jpg" alt="" className='img-fluid rounded-circle'/>
+                <img src="/images/testimonial-04.jpg" alt="" className='img-fluid rounded-circle'/>
                 <p className='textp'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum, esse, enim voluptatem vitae sed ipsum 
                   odio a eaque dicta voluptatum!</p>
                   <p className='textstar'>
@@ -38,7 +38,7 @@ const TestimonalSection = () => {
             </div>
             <div className="col-sm-3">
               <div className='shadow-lg p-3'>
-                <img src="/public/images/testimonial-03.png" alt="" className='img-fluid rounded-circle'/>
+                <img src="/images/testimonial-03.png" alt="" className='img-fluid rounded-circle'/>
                 <p className='textp'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eum, esse, enim voluptatem vitae sed ipsum 
                   odio a eaque dicta voluptatum!</p>
                   <p className='textstar'>
