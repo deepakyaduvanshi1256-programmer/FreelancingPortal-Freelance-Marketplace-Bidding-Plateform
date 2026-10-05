@@ -21,7 +21,7 @@ export const verifyToken = (req, res, next) => {
 // Restrict route to specific role(s), e.g. allowRoles("admin") or allowRoles("client","admin")
 export const allowRoles = (...roles) => (req, res, next) => {
   if (!req.user || !roles.includes(req.user.type)) {
-    return res.status(403).json({ code: 403, success: false, message: "Access denied", result: "", error: true });
+    return res.status(403).json({ code: 403, success: false, message: "Access denied", result: "", error: true })
   }
   next();
 };
