@@ -24,4 +24,4 @@ export const allowRoles = (...roles) => (req, res, next) => {
     return res.status(403).json({ code: 403, success: false, message: "Access denied", result: "", error: true })
   }
   next();
-};
+}
