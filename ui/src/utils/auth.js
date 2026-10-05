@@ -9,7 +9,7 @@ export const getUser = () => {
   } catch {
     return null;
   }
-};
+}
 
 export const getToken = () => localStorage.getItem("token");
 
