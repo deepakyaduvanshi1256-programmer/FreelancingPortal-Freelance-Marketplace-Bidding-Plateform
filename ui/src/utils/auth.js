@@ -20,7 +20,7 @@ export const updateStoredUser = (user) => {
 
 export const clearAuth = () => {
   localStorage.removeItem("info");
-  localStorage.removeItem("token");
+  localStorage.removeItem("token")
 };
 
 export const isLoggedIn = () => !!getToken();
