@@ -11,7 +11,7 @@ axiosInstance.interceptors.request.use((config) => {
     config.headers.Authorization = `Bearer ${token}`;
   }
   return config;
-});
+})
 
 // If the token is missing/expired, the server responds 401 — clear stale auth
 // and send the user back to login instead of leaving them stuck on a broken page.
