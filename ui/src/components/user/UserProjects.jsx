@@ -191,7 +191,6 @@
 
 
 
-
 import React, { useEffect, useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import Swal from 'sweetalert2'
@@ -199,65 +198,83 @@ import axiosInstance from '../../utils/axiosInstance'
 import StatusBadge from '../common/StatusBadge'
 
 const UserProjects = () => {
-  const [tab, setTab] = useState('open') // open | mine
+  const [tab, setTab] = useState('open')
   const [openProjects, setOpenProjects] = useState([])
   const [myProjects, setMyProjects] = useState([])
-  const [bidProject, setBidProject] = useState(null) // project currently being bid on
+  const [bidProject, setBidProject] = useState(null)
 
+  // Reference for the complete bid form
   const bidFormRef = useRef(null)
-  const amountInputRef = useRef(null)
 
   const {
     register,
     handleSubmit,
     reset,
+    setFocus,
     formState: { errors }
   } = useForm()
 
+  // Fetch projects when component loads
   useEffect(() => {
     fetchOpen()
     fetchMine()
   }, [])
 
+  // Fetch open projects
   const fetchOpen = async () => {
     try {
       const res = await axiosInstance.get('/developer-open-projects')
+
       setOpenProjects(res?.data?.result || [])
     } catch (error) {
       console.log(error)
     }
   }
 
+  // Fetch my assigned projects
   const fetchMine = async () => {
     try {
       const res = await axiosInstance.get('/developer-my-projects')
+
       setMyProjects(res?.data?.result || [])
     } catch (error) {
       console.log(error)
     }
   }
 
+  // Open bid form
   const openBidForm = (project) => {
     setBidProject(project)
 
+    // Clear previous form data
     reset({
       amount: '',
       duration: '',
       proposal: ''
     })
-
-    // Form open hone ke baad automatically form par scroll
-    setTimeout(() => {
-      bidFormRef.current?.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start'
-      })
-
-      // Cursor/focus amount input par
-      amountInputRef.current?.focus()
-    }, 100)
   }
 
+  /*
+    This runs AFTER bidProject is updated
+    and the bid form is rendered on the page.
+  */
+  useEffect(() => {
+    if (!bidProject) return
+
+    // Wait for the DOM to render
+    requestAnimationFrame(() => {
+      // Scroll to bid form
+      bidFormRef.current?.scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      })
+
+      // Put cursor directly in amount input
+      setFocus('amount')
+    })
+  }, [bidProject, setFocus])
+
+  // Submit bid
   const submitBid = async (data) => {
     try {
       const res = await axiosInstance.post('/developer-place-bid', {
@@ -274,7 +291,10 @@ const UserProjects = () => {
           icon: 'success'
         })
 
+        // Close bid form
         setBidProject(null)
+
+        // Refresh open projects
         fetchOpen()
       } else {
         Swal.fire({
@@ -286,7 +306,9 @@ const UserProjects = () => {
     } catch (error) {
       Swal.fire({
         title: 'Error',
-        text: error.response?.data?.message || 'Something went wrong',
+        text:
+          error.response?.data?.message ||
+          'Something went wrong',
         icon: 'error'
       })
     }
@@ -295,50 +317,53 @@ const UserProjects = () => {
   return (
     <div className="container py-5">
 
-      {/* Heading */}
-      <div className="row">
-        <div className="col-12">
-          <span className="dash-eyebrow">
-            Zentora for Freelancers
-          </span>
+      {/* =========================
+          PAGE HEADING
+      ========================== */}
+      <div className="mb-4">
+        <h2 className="fw-bold">
+          Developer Dashboard
+        </h2>
 
-          <h2 className="dash-heading">
-            Browse Projects
-          </h2>
-        </div>
+        <p className="text-secondary">
+          Find projects and place your bids.
+        </p>
       </div>
 
-      {/* Tabs */}
-      <div className="row mb-3">
-        <div className="col-12">
 
-          <button
-            className={`btn btn-sm me-2 ${
-              tab === 'open'
-                ? 'btn-orange'
-                : 'btn-outline-secondary'
-            }`}
-            onClick={() => setTab('open')}
-          >
-            Open Projects
-          </button>
+      {/* =========================
+          TABS
+      ========================== */}
+      <div className="mb-4">
 
-          <button
-            className={`btn btn-sm ${
-              tab === 'mine'
-                ? 'btn-orange'
-                : 'btn-outline-secondary'
-            }`}
-            onClick={() => setTab('mine')}
-          >
-            My Assigned Work
-          </button>
+        <button
+          className={`btn me-2 ${
+            tab === 'open'
+              ? 'btn-orange'
+              : 'btn-outline-secondary'
+          }`}
+          onClick={() => setTab('open')}
+        >
+          Open Projects
+        </button>
 
-        </div>
+        <button
+          className={`btn ${
+            tab === 'mine'
+              ? 'btn-orange'
+              : 'btn-outline-secondary'
+          }`}
+          onClick={() => setTab('mine')}
+        >
+          My Projects
+        </button>
+
       </div>
 
-      {/* ================= OPEN PROJECTS ================= */}
 
+      {/* =====================================================
+          OPEN PROJECTS
+      ====================================================== */}
       {tab === 'open' && (
         <div className="row">
 
@@ -346,25 +371,29 @@ const UserProjects = () => {
 
             <div className="dash-card">
 
-              <div className="table-responsive">
+              <h5 className="mb-3">
+                Available Projects
+              </h5>
 
-                <table className="table dash-table mb-0">
+              {openProjects.length > 0 ? (
 
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Description</th>
-                      <th>Budget</th>
-                      <th>Duration</th>
-                      <th>Action</th>
-                    </tr>
-                  </thead>
+                <div className="table-responsive">
 
-                  <tbody>
+                  <table className="table align-middle">
 
-                    {openProjects.length > 0 ? (
+                    <thead>
+                      <tr>
+                        <th>Project</th>
+                        <th>Description</th>
+                        <th>Budget</th>
+                        <th>Duration</th>
+                        <th>Action</th>
+                      </tr>
+                    </thead>
 
-                      openProjects.map((p) => (
+                    <tbody>
+
+                      {openProjects.map((p) => (
 
                         <tr key={p._id}>
 
@@ -397,26 +426,25 @@ const UserProjects = () => {
 
                         </tr>
 
-                      ))
+                      ))}
 
-                    ) : (
+                    </tbody>
 
-                      <tr>
-                        <td
-                          colSpan="5"
-                          className="no-data"
-                        >
-                          No open projects right now
-                        </td>
-                      </tr>
+                  </table>
 
-                    )}
+                </div>
 
-                  </tbody>
+              ) : (
 
-                </table>
+                <div className="text-center py-4">
 
-              </div>
+                  <p className="text-secondary mb-0">
+                    No open projects available.
+                  </p>
+
+                </div>
+
+              )}
 
             </div>
 
@@ -425,38 +453,50 @@ const UserProjects = () => {
         </div>
       )}
 
-      {/* ================= MY PROJECTS ================= */}
 
+      {/* =====================================================
+          MY PROJECTS
+      ====================================================== */}
       {tab === 'mine' && (
+
         <div className="row">
 
           <div className="col-12">
 
             <div className="dash-card">
 
-              <div className="table-responsive">
+              <h5 className="mb-3">
+                My Assigned Projects
+              </h5>
 
-                <table className="table dash-table mb-0">
+              {myProjects.length > 0 ? (
 
-                  <thead>
-                    <tr>
-                      <th>Title</th>
-                      <th>Budget</th>
-                      <th>Duration</th>
-                      <th>Status</th>
-                    </tr>
-                  </thead>
+                <div className="table-responsive">
 
-                  <tbody>
+                  <table className="table align-middle">
 
-                    {myProjects.length > 0 ? (
+                    <thead>
+                      <tr>
+                        <th>Project</th>
+                        <th>Description</th>
+                        <th>Budget</th>
+                        <th>Duration</th>
+                        <th>Status</th>
+                      </tr>
+                    </thead>
 
-                      myProjects.map((p) => (
+                    <tbody>
+
+                      {myProjects.map((p) => (
 
                         <tr key={p._id}>
 
                           <td>
                             {p.title}
+                          </td>
+
+                          <td>
+                            {p.des}
                           </td>
 
                           <td>
@@ -468,41 +508,45 @@ const UserProjects = () => {
                           </td>
 
                           <td>
-                            <StatusBadge status={p.status} />
+                            <StatusBadge
+                              status={p.status}
+                            />
                           </td>
 
                         </tr>
 
-                      ))
+                      ))}
 
-                    ) : (
+                    </tbody>
 
-                      <tr>
-                        <td
-                          colSpan="4"
-                          className="no-data"
-                        >
-                          No assigned projects yet
-                        </td>
-                      </tr>
+                  </table>
 
-                    )}
+                </div>
 
-                  </tbody>
+              ) : (
 
-                </table>
+                <div className="text-center py-4">
 
-              </div>
+                  <p className="text-secondary mb-0">
+                    No assigned projects found.
+                  </p>
+
+                </div>
+
+              )}
 
             </div>
 
           </div>
 
         </div>
+
       )}
 
-      {/* ================= BID FORM ================= */}
 
+      {/* =====================================================
+          BID FORM
+      ====================================================== */}
       {bidProject && (
 
         <div
@@ -519,16 +563,24 @@ const UserProjects = () => {
               </h5>
 
               <p className="text-secondary small">
+
                 Placing a bid costs 10 tokens.
                 It is not refunded if the client doesn't select you.
+
               </p>
 
+
+              {/* =========================
+                  BID FORM
+              ========================== */}
               <form onSubmit={handleSubmit(submitBid)}>
 
                 <div className="row g-3">
 
-                  {/* Amount */}
 
+                  {/* =========================
+                      AMOUNT
+                  ========================== */}
                   <div className="col-12 col-sm-6">
 
                     <label className="form-label">
@@ -538,13 +590,10 @@ const UserProjects = () => {
                     <input
                       type="text"
                       className="form-control"
+                      placeholder="Enter your price"
                       {...register('amount', {
                         required: true
                       })}
-                      ref={(e) => {
-                        register('amount').ref(e)
-                        amountInputRef.current = e
-                      }}
                     />
 
                     {errors.amount && (
@@ -555,8 +604,10 @@ const UserProjects = () => {
 
                   </div>
 
-                  {/* Duration */}
 
+                  {/* =========================
+                      DURATION
+                  ========================== */}
                   <div className="col-12 col-sm-6">
 
                     <label className="form-label">
@@ -580,8 +631,10 @@ const UserProjects = () => {
 
                   </div>
 
-                  {/* Proposal */}
 
+                  {/* =========================
+                      PROPOSAL
+                  ========================== */}
                   <div className="col-12">
 
                     <label className="form-label">
@@ -591,6 +644,7 @@ const UserProjects = () => {
                     <textarea
                       className="form-control"
                       rows="4"
+                      placeholder="Write your proposal..."
                       {...register('proposal', {
                         required: true
                       })}
@@ -604,8 +658,10 @@ const UserProjects = () => {
 
                   </div>
 
-                  {/* Buttons */}
 
+                  {/* =========================
+                      BUTTONS
+                  ========================== */}
                   <div className="col-12">
 
                     <button
@@ -618,7 +674,15 @@ const UserProjects = () => {
                     <button
                       type="button"
                       className="btn btn-outline-secondary"
-                      onClick={() => setBidProject(null)}
+                      onClick={() => {
+                        setBidProject(null)
+
+                        reset({
+                          amount: '',
+                          duration: '',
+                          proposal: ''
+                        })
+                      }}
                     >
                       Cancel
                     </button>
