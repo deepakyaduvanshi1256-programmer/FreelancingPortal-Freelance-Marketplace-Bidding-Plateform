@@ -425,7 +425,7 @@ const UserProjects = () => {
         </div>
       )}
 
-      {/* ================= MY PROJECTS =============== */}
+      {/* ================= MY PROJECTS ================= */}
 
       {tab === 'mine' && (
         <div className="row">
