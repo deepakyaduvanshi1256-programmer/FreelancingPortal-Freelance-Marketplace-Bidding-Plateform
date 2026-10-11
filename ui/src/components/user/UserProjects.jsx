@@ -321,16 +321,18 @@ const UserProjects = () => {
       ========================== */}
       <div className="mb-4">
         <button
-          className={`btn me-2 ${tab === "open" ? "btn-orange" : "btn-outline-secondary"
-            }`}
+          className={`btn me-2 ${
+            tab === "open" ? "btn-orange" : "btn-outline-secondary"
+          }`}
           onClick={() => setTab("open")}
         >
           Open Projects
         </button>
 
         <button
-          className={`btn ${tab === "mine" ? "btn-orange" : "btn-outline-secondary"
-            }`}
+          className={`btn ${
+            tab === "mine" ? "btn-orange" : "btn-outline-secondary"
+          }`}
           onClick={() => setTab("mine")}
         >
           My Projects
@@ -340,6 +342,7 @@ const UserProjects = () => {
       {/* =====================================================
           OPEN PROJECTS
       ====================================================== */}
+
       {tab === "open" && (
         <div className="row">
           <div className="col-12">
@@ -363,22 +366,19 @@ const UserProjects = () => {
                       {openProjects.map((p) => (
                         <tr key={p._id}>
                           <td>{p.title}</td>
-
                           <td>{p.des}</td>
-
                           <td>₹{p.budget}</td>
-
                           <td>{p.duration}</td>
-
-                          <>
+                          <td>
                             <button
+                              type="button"
                               className="btn btn-sm btn-orange"
                               onClick={() => openBidForm(p)}
                             >
                               Place Bid
                             </button>
-              
-                       </tr>
+                          </td>
+                        </tr>
                       ))}
                     </tbody>
                   </table>
@@ -494,28 +494,49 @@ const UserProjects = () => {
                     <label className="form-label">Delivery Duration</label>
 
                     <input
-                      type="text" className="form-control" placeholder="e.g. 2 weeks"
-                      {...register("duration", {required: true,})}/>
-                    {errors.duration && (<div className="text-danger small">Required</div>)}</div>
+                      type="text"
+                      className="form-control"
+                      placeholder="e.g. 2 weeks"
+                      {...register("duration", { required: true })}
+                    />
+                    {errors.duration && (
+                      <div className="text-danger small">Required</div>
+                    )}
+                  </div>
 
                   {/* =========================
                       PROPOSAL
                   ========================== */}
                   <div className="col-12">
                     <label className="form-label">Proposal</label>
-
                     <textarea
-                      className="form-control" rows="4"placeholder="Write your proposal..."{...register("proposal", {required: true,})}/>
-                    {errors.proposal && (<div className="text-danger small">Required</div>)} </div>
+                      className="form-control"
+                      rows="4"
+                      placeholder="Write your proposal..."
+                      {...register("proposal", { required: true })}
+                    />
+                    {errors.proposal && (
+                      <div className="text-danger small">Required</div>
+                    )}{" "}
+                  </div>
 
                   {/* =========================
                       BUTTONS
                   ========================== */}
                   <div className="col-12">
-                    <button type="submit" className="btn btn-orange me-2">  Submit Bid</button>
+                    <button type="submit" className="btn btn-orange me-2">
+                      {" "}
+                      Submit Bid
+                    </button>
 
-                    <button type="button" className="btn btn-outline-secondary" onClick={() => {  
-                       setBidProject(null);reset({amount: "",duration: "",proposal: "",}); }}>
+                    <button
+                      type="button"
+                      className="btn btn-outline-secondary"
+                      onClick={() => {
+                        setBidProject(null);
+                        reset({ amount: "", duration: "", proposal: "" });
+                      }}
+                    >
                       Cancel
                     </button>
                   </div>
